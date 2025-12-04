@@ -82,6 +82,7 @@ export default function MemberList() {
         <div key={member.id} className="bg-white rounded-lg shadow-md p-6">
           <div className="flex flex-col items-center text-center">
             {member.avatar_url ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={member.avatar_url}
                 alt={member.username}

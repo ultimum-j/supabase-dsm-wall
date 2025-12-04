@@ -42,6 +42,7 @@ export default function FeedList({ initialFilter = 'all', initialUserId }: FeedL
 
   useEffect(() => {
     loadPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterMode, sortMode, filterUserId]);
 
   const linkifyText = (text: string) => {
@@ -106,9 +107,6 @@ export default function FeedList({ initialFilter = 'all', initialUserId }: FeedL
 
       const { data: postsData, error: postsError } = await query;
       if (postsError) throw postsError;
-
-      // Get likes and bookmarks counts
-      const postIds = postsData?.map(p => p.id) || [];
       const [likesResult, bookmarksResult, userLikesResult, userBookmarksResult] = await Promise.all([
         supabase.from('likes').select('post_id'),
         supabase.from('bookmarks').select('post_id'),
@@ -250,7 +248,7 @@ export default function FeedList({ initialFilter = 'all', initialUserId }: FeedL
       setCaption('');
       setShowPostForm(false);
       loadPosts();
-    } catch (err) {
+    } catch {
       setPostMessage('Error creating post');
     } finally {
       setPosting(false);
@@ -381,12 +379,13 @@ export default function FeedList({ initialFilter = 'all', initialUserId }: FeedL
           <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
             {/* User info */}
             <div className="p-4 flex items-center gap-3">
-              {post.user?.avatar_url ? (
-                <img
-                  src={post.user.avatar_url}
-                  alt={post.user.username}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+            {post.user?.avatar_url ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={post.user.avatar_url}
+                alt={post.user.username}
+                className="w-10 h-10 rounded-full object-cover"
+              />
               ) : (
                 <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
                   <span className="text-gray-600 font-medium">
@@ -404,6 +403,7 @@ export default function FeedList({ initialFilter = 'all', initialUserId }: FeedL
 
             {/* Content */}
             {post.type === 'photo' && post.file_url && (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={post.file_url}
                 alt="Post"

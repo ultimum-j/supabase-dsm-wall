@@ -87,7 +87,7 @@ export default function ProfileForm() {
 
       setMessage('Profile updated successfully!');
       loadUser();
-    } catch (err) {
+    } catch {
       setMessage('Error updating profile');
     } finally {
       setLoading(false);
@@ -101,6 +101,7 @@ export default function ProfileForm() {
       <form onSubmit={handleSubmit} className="space-y-6">
         {user.avatar_url && (
           <div className="flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={user.avatar_url}
               alt="Avatar"

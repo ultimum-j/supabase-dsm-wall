@@ -68,7 +68,7 @@ export default function UploadForm() {
       setTimeout(() => {
         window.location.href = '/feed';
       }, 1000);
-    } catch (err) {
+    } catch {
       setMessage('Error uploading file');
     } finally {
       setLoading(false);

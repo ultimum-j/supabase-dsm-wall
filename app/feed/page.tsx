@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 
 export default function FeedPage() {
   const searchParams = useSearchParams();
-  const filter = searchParams.get('filter') as any;
+  const filter = (searchParams.get('filter') as 'all' | 'liked' | 'bookmarked' | 'user') || 'all';
   const userId = searchParams.get('userId') || undefined;
 
   return (

@@ -1,0 +1,16 @@
+
+> supabase-dsm-wall@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.7
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.198:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1450ms
+ ○ Compiling / ...
+ ✓ Compiled / in 4.8s (779 modules)
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+ GET / 200 in 5534ms
+ ✓ Compiled in 304ms (322 modules)
